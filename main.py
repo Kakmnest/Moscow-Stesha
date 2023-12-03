@@ -12,19 +12,21 @@ class Drawer(QMainWindow):
         uic.loadUi("UI.ui", self)
         self.setWindowTitle('Думали, что это розовые параболы? А это желтые окружности')
         self.do_paint = False
-        self.button.clicked.connect(self.draw)
+        self.pushButton.clicked.connect(self.draw)
 
     def draw(self):
-        canvas = QPixmap(self.background.size())
+        canvas = QPixmap(self.label.size())
         self.qp = QPainter(canvas)
         pen = QPen()
         pen.setWidth(2)
         pen.setColor(QColor(255, 142, 0))
         self.qp.setPen(pen)
-        self.qp.drawEllipse(random.randint(0, 450), random.randint(0, 450),
-                            random.randint(0, 450), random.randint(0, 450))
+        x = random.randint(0, 400)
+        y = random.randint(0, 400)
+        d = random.randint(20, 300)
+        self.qp.drawEllipse(x, y, d, d)
         self.qp.end()
-        self.background.setPixmap(canvas)
+        self.label.setPixmap(canvas)
 
 
 if __name__ == '__main__':
