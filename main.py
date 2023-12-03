@@ -25,3 +25,10 @@ class Drawer(QMainWindow):
                             random.randint(0, 450), random.randint(0, 450))
         self.qp.end()
         self.background.setPixmap(canvas)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = Drawer()
+    ex.show()
+    sys.exit(app.exec_())
